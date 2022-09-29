@@ -1,5 +1,5 @@
 <template>
-    <section @click="closeMenu" class="cart__overlay hidden">
+    <section @click="closeOverlay" class="cart__overlay hidden">
         <div class="cart">
             <div class="cart__heading">
                 SHOPPING BAG ( 1 ) <a @click.prevent="closeMenu" class="close" href="#"></a>
