@@ -1,4 +1,22 @@
-@import './vars'
+@import './styles/vars'
+
+body 
+    font-family: 'sofia-pro', sans-serif
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+a
+    text-decoration: none
+
+.wrapper
+    margin: 0 auto
+    width: 1200px
+    display: flex
+
+.close
+    height: 16px
+    width: 16px
+    background-image: url("./img/icons/close.svg")
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button 
     -webkit-appearance: none
@@ -47,3 +65,22 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
         position: absolute
         left: 21px
         top: 19px
+
+.button
+    height: 60px
+    width: 340px
+    font-weight: 500
+    font-size: 14px
+    line-height: 24px
+    color: $text-white
+    display: flex
+    text-align: center
+    justify-content: center
+    align-items: center
+    background-color: $head
+    border: none
+    transition-duration: 0.4s
+    &:hover
+        cursor: pointer
+        background-color: $third  
+  

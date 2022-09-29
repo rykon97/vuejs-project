@@ -242,24 +242,6 @@ export default {
 <style lang="sass">
 @import './src/styles/vars.sass'
 
-body 
-    font-family: 'sofia-pro', sans-serif
-    -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale
-
-a
-    text-decoration: none
-
-.wrapper
-    margin: 0 auto
-    width: 1200px
-    display: flex
-
-.close
-    height: 16px
-    width: 16px
-    background-image: url("/img/icons/close.svg")
-
 .shop-category
     &__wrapper
         flex-direction: column
