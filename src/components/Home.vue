@@ -1,6 +1,4 @@
 <template>
-    <Header></Header>
-
     <section class="first-screen">
         <div class="wrapper">
             <h3>SUMMER 2020</h3>
@@ -108,8 +106,6 @@
             </div>
         </div>
     </section>
-
-    <Footer/>
 </template>
 
 <script>
@@ -223,7 +219,7 @@ export default {
             ],
         }
     },
-    components: { Header, Footer, Product },
+    components: { Product },
     methods: {
         changeCategory(index) {
             this.active = index;
@@ -449,8 +445,9 @@ export default {
 .first-screen
     height: calc(100vh - 40px)
     min-height: 700px
-    width: 100vw
+    width: 100%
     background-image: url("./img/first-screen.png")
+    background-size: cover
     margin-top: -70px
     .wrapper
         justify-content: center
