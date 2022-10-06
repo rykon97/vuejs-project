@@ -5,11 +5,7 @@
                 <div class="preview">
                     <div class="images">
                         <div class="list">
-                            <img class="soft-image" src="/img/list_images.png" alt="lol">
-                            <img class="soft-image" src="/img/list_images.png" alt="lol">
-                            <img class="soft-image" src="/img/list_images.png" alt="lol">
-                            <img class="soft-image" src="/img/list_images.png" alt="lol">
-                            <img class="soft-image" src="/img/list_images.png" alt="lol">
+                            <img v-for="(item, index) in images" :src="item" alt="">
                         </div>
                         <img class="main-image" src="/img/main-image.png" alt="suk">
                     </div>
@@ -108,13 +104,16 @@ export default {
             activeSize: 0,
             sizes: [
                 "XS", "S", "M", "L", "XL","XXL"
+            ],
+            images: [
+                "/img/main-image.png", "/img/second-image.png", "/img/main-image.png", "/img/main-image.png"
             ]
         }
     },
     methods: {
         changeSize(active) {
             this.activeSize = active; 
-        } 
+        },
     },
     components: { Product },
 }
@@ -146,6 +145,11 @@ export default {
         display: flex
         flex-direction: column
         margin-right: 8px
+        img
+            width: 90px
+            height: 90px
+            &:not(:last-child)
+                margin-bottom: 8px
     .main-info
         width: 500px
     .breadcrumbs
