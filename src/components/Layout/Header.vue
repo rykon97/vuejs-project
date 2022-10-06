@@ -1,6 +1,6 @@
 <template>
     <header class="soft">
-        <div class="wrapper home">
+        <div class="wrapper" :class="[currentRoute === '/' ? 'home' : '']">
             <div class="links">
                 <a href="">Shipping</a><a href="">FAQ</a><a href="">Contact</a><a href="">Track Order</a>
             </div>  
@@ -19,9 +19,9 @@
     </header>
 
     <header class="main">
-        <div class="wrapper home">
+        <div class="wrapper" :class="[currentRoute === '/' ? 'home' : '']">
             <div class="links">
-                <a href="">HOME</a><a href="">SHOP</a><a href="">COLLECTION</a><a href="">JOURNAL</a><a href="">LOOKBOOK</a><a href="">PAGES</a>
+                <router-link to="/">HOME</router-link><a href="">SHOP</a><a href="">COLLECTION</a><a href="">JOURNAL</a><a href="">LOOKBOOK</a><a href="">PAGES</a>
             </div>
             <div class="logo">
                 <a href=""><img src="/img/icons/logo.svg" alt=""></a>
@@ -36,11 +36,17 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 import Cart from './Cart.vue';
 
 export default {
     components: {
         Cart
+    },
+    computed: {
+        currentRoute() {
+            return this.$route.path;
+        }
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="best-selling__item">
-        <a href="#">
+        <router-link to="/product">
             <div class="best-selling__image">
                 <img :src="image" alt="Lol">
                 <div class="best-selling__cart">
@@ -25,7 +25,7 @@
                     <samp>-67%</samp>
                 </div>
             </div>
-        </a>
+        </router-link>
         <h3 class="best-selling__tip">{{ type }}</h3>
         <h2 class="best-selling__name">{{ name }}</h2>
         <p class="best-selling__cost">${{ cost }}</p>
