@@ -1,4 +1,19 @@
-@import './vars'
+<template>
+    <label class="checkbox">
+        {{ name }}
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label> 
+</template>
+
+<script>
+export default {
+    props: ['name']
+}
+</script>
+
+<style lang="sass">
+@import './src/styles/vars.sass'
 
 .checkbox 
     display: block
@@ -45,3 +60,4 @@
                     display: block
         &:hover input ~ .checkmark 
             background-color: #ccc
+</style>
