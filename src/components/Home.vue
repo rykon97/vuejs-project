@@ -109,8 +109,6 @@
 </template>
 
 <script>
-import Header from './Layout/Header.vue';
-import Footer from './Layout/Footer.vue';
 import Product from './Core/Product.vue';
 
 export default {

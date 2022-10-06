@@ -5,6 +5,7 @@ import './main.sass'
 import App from './App.vue'
 import Home from './components/Home.vue'
 import Product from './components/Product.vue'
+import Checkout from './components/Checkout.vue'
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -12,6 +13,7 @@ import Product from './components/Product.vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/product', component: Product },
+  { path: '/checkout', component: Checkout },
 ]
 
 // 3. Create the router instance and pass the `routes` option

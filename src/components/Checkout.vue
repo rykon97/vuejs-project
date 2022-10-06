@@ -99,12 +99,10 @@
                             </div>
                             <div class="checkout__columns">
                                 <div class="checkout__clothes-name">
-                                    <h5>Zessi Dresses x2</h5>
-                                    <h5>Kirby T-Shirt</h5>
+                                    <h5 v-for="item in items">{{item.name}}</h5>
                                 </div>
                                 <div class="checkout__clothes-cost">
-                                    <h5>$32.50</h5>
-                                    <h5>$29.90</h5>
+                                    <h5 v-for="item in items" >${{item.cost}}</h5>
                                 </div>
                             </div>
                             <div class="checkout__columns">
@@ -175,16 +173,26 @@
 </template>
 
 <script>
-    import Header from './Layout/Header.vue';
-    import Footer from './Layout/Footer.vue';
     import Checkbox from './Core/Checkbox.vue';
 
     export default {
-        components: { Header, Footer, Checkbox }
+        components: { Checkbox },
+        date() {
+            return {
+                items: [
+                    {
+                        name: "Kirby T-Shirt x2", cost: "32.50"
+                    },
+                    {
+                        name: "Kirby T-Shirt", cost: "29.90"
+                    }
+                ]
+            }
+        }
     }
 </script>
 
-<style lang="sass"> 
+<style lang="sass">
 @import './src/styles/vars.sass'
 
 .checkout

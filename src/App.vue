@@ -14,10 +14,11 @@ export default {
   components: {
     Home,
     Header,
-    Footer
+    Footer,
+    Checkout
   },
   created() {
-    
+
   }
 }
 </script>
