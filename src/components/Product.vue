@@ -5,9 +5,9 @@
                 <div class="preview">
                     <div class="images">
                         <div class="list">
-                            <img v-for="(item, index) in images" :src="item" alt="">
+                            <a v-for="(item, index) in images" :class="{active: index === activeImages}" @click.prevent="changeImages(index)" href=""><img :src="item" alt=""></a>
                         </div>
-                        <img class="main-image" src="/img/main-image.png" alt="suk">
+                        <img class="main-image" :src="images[activeImages]" alt="">
                     </div>
                     <div class="main-info">
                         <div class="breadcrumbs">
@@ -47,9 +47,9 @@
                 </div>
                 <div class="description">
                     <div class="description-title">
-                        <a class="active" href="">DESCRIPTION</a><a href="">ADDITIONAL INFORMATION</a><a href="">REVIEWS (3)</a>
+                        <a v-for="(item, index) in titles" :class="{active: index === activeTitle}" @click.prevent="changeTitle(index)" href="">{{item}}</a>
                     </div>
-                    <div class="discription-container active">
+                    <div class="discription-container">
                         <div class="main-description">
                             <h1>Sed do eiusmod tempor incididunt ut labore</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
@@ -87,7 +87,7 @@
                 <div class="related-products">
                     <h1>RELATED PRODUCTS</h1>
                     <div class="products-container">
-
+                        <Product v-for="item in products" :image="item.image" :type="item.type" :name="item.name" :cost="item.cost"/>
                     </div>
                 </div>
             </div>
@@ -102,18 +102,84 @@ export default {
     data() {
         return {
             activeSize: 0,
+            activeImages: 0,
+            activeTitle: 0,
             sizes: [
                 "XS", "S", "M", "L", "XL","XXL"
             ],
             images: [
                 "/img/main-image.png", "/img/second-image.png", "/img/main-image.png", "/img/main-image.png"
-            ]
+            ],
+            titles: [
+                "DESCRIPTION","ADDITIONAL INFORMATION","REVIEWS (3)"
+            ],
+            products: [
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '99'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '99'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '99'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '99'
+                }
+            ],
+            products_new: [
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '949'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '969'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '979'
+                },
+                {
+                    image: '/img/product.png',
+                    type: 'Jean',
+                    name: 'Cropped Faux Leather Jacket',
+                    cost: '989'
+                }
+            ],
         }
     },
     methods: {
+        changeImages(active) {
+            this.activeImages = active; 
+        },
         changeSize(active) {
             this.activeSize = active; 
         },
+        changeTitle(active) {
+            this.activeTitle = active;
+        },
+        mainImage() {
+            
+        }
     },
     components: { Product },
 }
@@ -144,12 +210,17 @@ export default {
     .list
         display: flex
         flex-direction: column
-        margin-right: 8px
+        padding-right: 8px
         img
             width: 90px
             height: 90px
+        a   
+            width: 90px
+            height: 90px     
             &:not(:last-child)
-                margin-bottom: 8px
+                margin-bottom: 8px 
+            &.active
+                border: 2px solid $third
     .main-info
         width: 500px
     .breadcrumbs
@@ -366,27 +437,6 @@ export default {
         font-weight: 400
         font-size: 16px
         line-height: 21px
-    .products-cloth-options a    
-        margin-right: 40px 
-        color: $second
-        position: relative
-        transition-duration: 0.4s
-        &.active
-            color: $head
-            &::before
-                transition-duration: 0.4s
-                content: ''
-                bottom: -7px
-                position: absolute
-                width: 90%
-                height: 2px
-                background-color: $head
-        &:hover
-            color: $head
-            .products-cloth-options a.active
-                color: $second
-            &::before
-                width: 90%
         &::before
             transition-duration: 0.4s
             content: ''
@@ -400,87 +450,4 @@ export default {
     .products-container
         display: flex
         justify-content: space-between
-        margin-top: 50px 
-    .products-item
-        width: 280px
-    .products-image
-        width: 280px
-        height: 340px
-        position: relative
-        overflow: hidden
-        &:hover .products-cart
-            bottom: 0
-        img
-            height: 340px
-            width: 280px
-    .this-products-info
-        width: 330px
-        position: relative
-    .products-like
-        position: absolute
-        color: $head
-        background-color: $text-white
-        top: -10px
-        right: 40px
-        border-radius: 20px
-        padding: 13px 12px 11px 12px
-        &:active
-            background-color: $red
-        &:hover
-            color: $red
-            &:active
-                color: $text-white
-    .products-tip
-        color: $second
-        font-weight: 400
-        font-size: 14px
-        line-height: 24px
-        margin-bottom: 0
-    .products-name
-        margin-top: 0
-        margin-bottom: 0 
-        color: $head
-        font-weight: 400
-        font-size: 16px
-        line-height: 21px
-    .products-cost
-        margin-top: 8px
-        color: $second
-    .products-cart
-        padding: 16px 0
-        background-color: $head
-        color: $text-white
-        display: flex
-        justify-content: space-around
-        position: absolute
-        width: 100%
-        bottom: -50.4px
-        left: 0
-        transition-duration: 0.4s
-    .products-new
-        font-weight: 400
-        font-size: 14px
-        line-height: 24px
-        position: absolute
-        color: $head
-        background-color: $text-white
-        top: 20px
-        left: 0
-        width: 55px
-        height: 30px
-        padding-top: 5px 
-        text-align: center
-    .products-discont
-        font-weight: 400
-        font-size: 14px
-        line-height: 24px
-        position: absolute
-        color: $text-white
-        background-color: $red
-        top: 20px
-        left: 0
-        width: 55px
-        height: 30px
-        padding-top: 5px 
-        text-align: center
 </style>
