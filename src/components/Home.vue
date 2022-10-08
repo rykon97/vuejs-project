@@ -224,11 +224,6 @@ export default {
 
             this.products = this.products_new;
         }
-    },
-    created() {
-        console.log(this.news)
-    },
-    mounted() {
     }
 }
 </script>

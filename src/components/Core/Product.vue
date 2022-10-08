@@ -1,6 +1,6 @@
 <template>
     <div class="best-selling__item">
-        <router-link to="/product">
+        <router-link to="/product_main">
             <div class="best-selling__image">
                 <img :src="image" alt="Lol">
                 <div class="best-selling__cart">

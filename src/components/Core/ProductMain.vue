@@ -49,39 +49,41 @@
                     <div class="description-title">
                         <a v-for="(item, index) in titles" :class="{active: index === activeTitle}" @click.prevent="changeTitle(index)" href="">{{item}}</a>
                     </div>
-                    <div class="discription-container">
-                        <div class="main-description">
-                            <h1>Sed do eiusmod tempor incididunt ut labore</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        </div>
-                        <div class="soft-description">
-                            <div class="why-choose">
-                                <h1>Why choose product?</h1>
-                                <ul type="disc">
-                                    <li>Creat by cotton fibric with soft and smooth</li>
-                                    <li>Simple, Configurable (e.g. size, color, etc.), bundled</li>
-                                    <li>Downloadable/Digital Products, Virtual Products</li>
-                                </ul>
+                    <div class="discription">
+                        <div v-if="titles[0] === titles[activeTitle]">
+                            <div class="main-description">
+                                <h1>Sed do eiusmod tempor incididunt ut labore</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                             </div>
-                            <div class="number-lis">
-                                <h1>Sample Number List</h1>
-                                <ol type="1">
-                                    <li>Create Store-specific attrittbutes on the fly</li>
-                                    <li>Simple, Configurable (e.g. size, color, etc.), bundled</li>
-                                    <li>Downloadable/Digital Products, Virtual Products</li>
-                                </ol>
+                            <div class="soft-description">
+                                <div class="why-choose">
+                                    <h1>Why choose product?</h1>
+                                    <ul type="disc">
+                                        <li>Creat by cotton fibric with soft and smooth</li>
+                                        <li>Simple, Configurable (e.g. size, color, etc.), bundled</li>
+                                        <li>Downloadable/Digital Products, Virtual Products</li>
+                                    </ul>
+                                </div>
+                                <div class="number-lis">
+                                    <h1>Sample Number List</h1>
+                                    <ol type="1">
+                                        <li>Create Store-specific attrittbutes on the fly</li>
+                                        <li>Simple, Configurable (e.g. size, color, etc.), bundled</li>
+                                        <li>Downloadable/Digital Products, Virtual Products</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="lining">
+                                <h1>Lining</h1>
+                                <p>100% Polyester, Main: 100% Polyester.</p>
                             </div>
                         </div>
-                        <div class="lining">
-                            <h1>Lining</h1>
-                            <p>100% Polyester, Main: 100% Polyester.</p>
+                        <div v-if="titles[1] === titles[activeTitle]">
+                            frgggr
                         </div>
-                    </div>
-                    <div class="discription-container">
-                        frgggr
-                    </div>
-                    <div class="discription-container">
-                        grggrgrgrg
+                        <div v-if="titles[2] === titles[activeTitle]">
+                            grggrgrgrg
+                        </div>
                     </div>
                 </div>
                 <div class="related-products">
@@ -96,7 +98,7 @@
 </template>
 
 <script>
-import Product from './Core/Product.vue';
+import Product from './Product.vue';
 
 export default {
     data() {
@@ -105,7 +107,7 @@ export default {
             activeImages: 0,
             activeTitle: 0,
             sizes: [
-                "XS", "S", "M", "L", "XL","XXL"
+                "XS", "S", "M", "L", "XL"
             ],
             images: [
                 "/img/main-image.png", "/img/second-image.png", "/img/main-image.png", "/img/main-image.png"
