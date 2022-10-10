@@ -3,35 +3,7 @@
         <div class="checkout__wrapper wrapper">
             <div class="checkout-conteiner">
                 <h1>SHIPPING AND CHECKOUT</h1>
-                <div class="shoping-step">
-                    <div class="steps-active">
-                        <div class="step-name">
-                            <h3>01</h3>
-                            <h3>SHOPPING BAG</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Manage Your Items List</span>
-                        </div>
-                    </div>
-                    <div class="steps-active">
-                        <div class="step-name">
-                            <h3>02</h3>
-                            <h3>SHIPPING AND CHECKOUT</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Checkout Your Items List</span>
-                        </div>
-                    </div>
-                    <div class="steps">
-                        <div class="step-name">
-                            <h3>03</h3>
-                            <h3>CONFIRMATION</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Review And Submit Your Order</span>
-                        </div>
-                    </div>
-                </div>
+                <ShoppingSteps :active="2"/>
                 <div class="checkout__container">
                     <div class="checkout__form">
                         <h4>BILLING DETAILS</h4>
@@ -174,10 +146,11 @@
 
 <script>
     import Checkbox from './Core/Checkbox.vue';
+    import ShoppingSteps from './ShoppingSteps.vue'
 
     export default {
-        components: { Checkbox },
-        date() {
+        components: { Checkbox, ShoppingSteps },
+        data() {
             return {
                 items: [
                     {
@@ -188,7 +161,7 @@
                     }
                 ]
             }
-        }
+        },
     }
 </script>
 

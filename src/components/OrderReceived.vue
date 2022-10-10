@@ -3,37 +3,9 @@
         <div class="wrapper">
             <div class="conteiner">
                 <h1>SHIPPING AND CHECKOUT</h1>
-                <div class="shoping-step">
-                    <div class="steps-active">
-                        <div class="step-name">
-                            <h3>01</h3>
-                            <h3>SHOPPING BAG</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Manage Your Items List</span>
-                        </div>
-                    </div>
-                    <div class="steps-active">
-                        <div class="step-name">
-                            <h3>02</h3>
-                            <h3>SHIPPING AND CHECKOUT</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Checkout Your Items List</span>
-                        </div>
-                    </div>
-                    <div class="steps-active">
-                        <div class="step-name">
-                            <h3>03</h3>
-                            <h3>CONFIRMATION</h3>
-                        </div>
-                        <div class="step-info">
-                            <span>Review And Submit Your Order</span>
-                        </div>
-                    </div>
-                </div>
+                <ShoppingSteps :active="3"/>
                 <div class="complete">
-                    <img src="./img/icons/Yeeeees.svg" alt="">
+                    <img src="/img/icons/Yeeeees.svg" alt="">
                     <h1>Your order is completed!</h1>
                     <span>Thank you. Your order has been received.</span>
                 </div>
@@ -97,51 +69,20 @@
     </section>    
 </template>
 
+<script>
+import ShoppingSteps from './ShoppingSteps.vue'
+
+export default {
+    components: {
+        ShoppingSteps
+    }
+}
+</script>
+
 <style lang="sass">
 @import '/src/styles/vars.sass'
 
 .order-received
-    .shoping-step
-        display: flex
-        justify-content: space-between
-        width: 1200px
-        padding-bottom: 10px 
-        border-bottom: 2px solid $background-footer
-        margin-bottom: 50px
-    .steps
-        width: 420px
-    .steps-active
-        position: relative
-        width: 420px
-        &::before
-            transition-duration: 0.4s
-            width: 100%
-            content: ''
-            bottom: -12px
-            position: absolute
-            height: 2px
-            background-color: $head
-        h3
-            color: $head !important
-    .step-name
-        display: flex
-        h3
-            margin-bottom: 0
-            color: $second
-            font-weight: 500
-            font-size: 18px
-            line-height: 24px
-            &:first-child
-                margin-right: 12px 
-    .step-info
-        padding-left: 30px
-        padding-top: -30px
-        span
-            margin-top: 0px 
-            color: $second
-            font-weight: 400
-            font-size: 14px
-            line-height: 30px
     .complete
         margin-bottom: 36px
         img
