@@ -35,7 +35,7 @@
                             <input class="black" type="radio" name="color"><input class="white" type="radio" name="color"><input class="red" type="radio" name="color">
                         </div>
                         <div class="add-to-cart">
-                            <div class="number"><a class="minus" href="#">-</a><input type="number" min="1" value="1"><a class="plus" href="#">+</a></div>
+                            <Number :max="100" :min="1"></Number>
                             <a class="button" href="">ADD TO CART</a>
                          </div>
                         <div class="wish">
@@ -99,6 +99,7 @@
 
 <script>
 import Product from './Product.vue';
+import Number from './Number.vue';
 
 export default {
     data() {
@@ -186,7 +187,7 @@ export default {
             
         }
     },
-    components: { Product },
+    components: { Product, Number },
 }
 </script>
 
