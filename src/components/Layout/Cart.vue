@@ -47,7 +47,7 @@
                     </div>
                     <div class="cart__buttons">
                         <a class="cart__view-cart" href="">VIEW CART</a>
-                        <a class="cart__checkout" href="">CHECKOUT</a>
+                        <router-link to="/shoping_bag" class="cart__checkout">CHECKOUT</router-link>
                     </div>
                 </div>
             </div>
