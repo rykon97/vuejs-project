@@ -136,32 +136,7 @@ export default {
                     description: 'Habitant morbi tristique senectus'
                 }
             ],
-            products: [
-                {
-                    image: '/img/product.png',
-                    type: 'Jean',
-                    name: 'Cropped Faux Leather Jacket',
-                    cost: '99'
-                },
-                {
-                    image: '/img/product.png',
-                    type: 'Jean',
-                    name: 'Cropped Faux Leather Jacket',
-                    cost: '99'
-                },
-                {
-                    image: '/img/product.png',
-                    type: 'Jean',
-                    name: 'Cropped Faux Leather Jacket',
-                    cost: '99'
-                },
-                {
-                    image: '/img/product.png',
-                    type: 'Jean',
-                    name: 'Cropped Faux Leather Jacket',
-                    cost: '99'
-                }
-            ],
+            products: [],
             products_new: [
                 {
                     image: '/img/product.png',
@@ -224,6 +199,15 @@ export default {
 
             this.products = this.products_new;
         }
+    },
+    created() {
+        fetch('https://rykon.test')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+              this.products = data;
+            });
     }
 }
 </script>

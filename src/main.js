@@ -7,6 +7,7 @@ import Home from './components/Home.vue'
 import ProductMain from './components/Core/ProductMain.vue'
 import Checkout from './components/Checkout.vue'
 import OrderReceived from './components/OrderReceived.vue'
+import ShoppingBag from "./components/ShoppingBag.vue";
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -16,6 +17,7 @@ const routes = [
   { path: '/product_main', component: ProductMain },
   { path: '/checkout', component: Checkout },
   { path: '/order_received', component: OrderReceived },
+  { path: '/shopping_bag', component: ShoppingBag },
 ]
 
 // 3. Create the router instance and pass the `routes` option

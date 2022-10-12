@@ -6,36 +6,22 @@
                 <ShoppingSteps :active="1"/>
                 <div class="shoping-conteiner">
                     <div class="shoping-bag">
-                        <div class="bag-info">
+                        <div v-if="items.length !== 0" class="bag-info">
                             <span>PRODUCT</span>
                             <span>PRICE</span>
                             <span>QUANTITY</span>
                             <span>SUBTOTAL</span>
                         </div>
-                        <div class="item">
-                            <a href=""><img src="./img/bag.png" alt=""></a>
-                            <h3>Zessi Dresses</h3>
-                            <h4>$99</h4>
-                            <div class="number"><a class="minus" href="#">-</a><input type="number" min="1" value="1"><a class="plus" href="#">+</a></div>
-                            <h5>$99</h5>
-                            <a class="close" href="#"></a>
+                        <div v-for="(item, index) in items" class="item">
+                            <a href=""><img :src="item.image" alt=""></a>
+                            <h3>{{item.name}}</h3>
+                            <h4>${{item.cost}}</h4>
+                            <Number v-model="item.count"/>
+                            <h5>${{item.cost*item.count}}</h5>
+                            <a @click.prevent="DeleteItem(index)" class="close" href="#"></a>
                         </div>
-                        <div class="item">
-                            <a href=""><img src="./img/bag.png" alt=""></a>
-                            <h3>Zessi Dresses</h3>
-                            <h4>$99</h4>
-                            <div class="number"><a class="minus" href="#">-</a><input type="number" min="1" value="1"><a class="plus" href="#">+</a></div>
-                            <h5>$99</h5>
-                            <a class="close" href="#"></a>
-                        </div>
-                        <div class="item">
-                            <a href=""><img src="./img/bag.png" alt=""></a>
-                            <h3>Zessi Dresses</h3>
-                            <h4>$99</h4>
-                            <div class="number"><a class="minus" href="#">-</a><input type="number" min="1" value="1"><a class="plus" href="#">+</a></div>
-                            <h5>$99</h5>
-                            <a class="close" href="#"></a>
-                        </div>
+                       <div v-if="items.length === 0">none</div>
+
                         <div class="button-case">
                             <div class="coupon-apply">
                                 <div class="input">
@@ -100,13 +86,39 @@
 
 <script>
 import ShoppingSteps from './ShoppingSteps.vue'
+import Number from './Core/Number.vue'
 
 export default {
-    components: { ShoppingSteps }
+  data(){
+    return {
+      items: [
+        {
+          image: "/img/bag.png", name: "Zessi Dresses", cost: "99"
+        },
+        {
+          image: "/img/bag.png", name: "Zessi Dresses", cost: "99"
+        },
+        {
+          image: "/img/bag.png", name: "Zessi Dresses", cost: "99"
+        },
+        {
+          image: "/img/bag.png", name: "Zessi Dresses", cost: "99"
+        }
+      ]
+    }
+  },
+  methods:{
+    DeleteItem(index) {
+      this.items.splice(index, 1)
+    }
+  },
+    components: { ShoppingSteps, Number }
 }
 </script>
 
 <style lang="sass">
+@import '/src/styles/vars.sass'
+
 .main-cart
     .container
         margin-top: 100px

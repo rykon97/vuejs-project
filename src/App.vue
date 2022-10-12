@@ -18,9 +18,6 @@ export default {
     Footer,
     Checkout,
     OrderReceived
-  },
-  created() {
-
   }
 }
 </script>

@@ -21,17 +21,23 @@ export default {
         max: {
             type: Number,
             default: 100
+        },
+        modelValue: {
+            type: Number
         }
     },
+    emits: ['update:modelValue'],
     methods: {
         plus() {
             if(this.valueChange < this.max) {
                 this.valueChange++
+                this.$emit('update:modelValue', this.modelValue + 1)
             }
         },
         minus() {
             if(this.valueChange > this.min) {
                 this.valueChange--
+                this.$emit('update:modelValue', this.modelValue - 1)
             }
         }
     },
@@ -39,10 +45,17 @@ export default {
         valueChange(newValue) {
             if(newValue > this.max) {
                 this.valueChange = this.max
+                this.$emit('update:modelValue', this.max)
             }
             if(newValue < this.min) {
                 this.valueChange = this.min
+                this.$emit('update:modelValue', this.min)
             }
+        }
+    },
+    created() {
+        if(!this.modelValue) {
+          this.$emit('update:modelValue', 1)
         }
     }
 }
