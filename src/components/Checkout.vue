@@ -49,16 +49,7 @@
                             <input type="text" name="" id="phone" placeholder=" ">
                             <label for="phone">Phone *</label>
                         </div>
-                        <label class="checkbox">
-                            CREATE AN ACCOUNT?
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox">
-                            SHIP TO A DIFFERENT ADDRESS?
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
+                        <Checkbox name="CREATE AN ACCOUNT?"/>
                         <Checkbox name="SHIP TO A DIFFERENT ADDRESS"/>
                         <textarea name="order"></textarea>
                     </div>

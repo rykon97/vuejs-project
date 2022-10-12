@@ -32,7 +32,11 @@
                         </div>
                         <div class="color">
                             <h3>COLOR</h3>
-                            <input class="black" type="radio" name="color"><input class="white" type="radio" name="color"><input class="red" type="radio" name="color">
+                            <div v-for="(item, index) in colors" :class="{active: index === activeColor}" @click.prevent="chengeColor(index)">
+                                <div class="radio">
+                                    <a :class="item" href=""></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="add-to-cart">
                             <Number :max="100" :min="1"></Number>
@@ -79,10 +83,63 @@
                             </div>
                         </div>
                         <div v-if="switchDescription(1)">
-                            frgggr
+                            <div class="info-conteiner">
+                                <div class="titles">
+                                    <h1>
+                                        Weight
+                                        <span>1.25 kg</span>
+                                    </h1>
+                                    <h1>
+                                        Dimensions
+                                        <span>90 x 60 x 90 cm</span>
+                                    </h1>
+                                    <h1>
+                                        Size
+                                        <span>XS, S, M, L, XL</span>
+                                    </h1>
+                                    <h1>
+                                        Color
+                                        <span>Black, Orange, White</span>
+                                    </h1>
+                                    <h1>
+                                        Storage
+                                        <span>Relaxed fit shirt-style dress with a rugged</span>
+                                    </h1>
+                                </div>
+                            </div>
                         </div>
                         <div v-if="switchDescription(2)">
-                            grggrgrgrg
+                            <h1 class="reviewsTitle">Reviews</h1>
+                            <div v-for="item in reviews" class="review">
+                                <div class="reviewsInfo">
+                                    <img :src="item.image" alt="">
+                                    <h3>{{item.name}}</h3>
+                                    <h4>{{item.data}}</h4>
+                                    <span>{{item.info}}</span>
+                                    <div class="reviewRating">
+                                        <a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="yourReviews">
+                                <h1>Be the first to review “Message Cotton T-Shirt”</h1>
+                                <span>Your email address will not be published. Required fields are marked *</span>
+                                    <textarea name="review" placeholder="Your Review"></textarea>
+                                    <div class="rewiewsInput">
+                                        <div class="input">
+                                        <input type="text" name="" id="name" placeholder=" ">
+                                        <label for="name">Name *</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" name="" id="email" placeholder=" ">
+                                        <label for="email">Email *</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <Checkbox name="Save my name, email, and website in this browser for the next time I comment."/>
+                                </div>
+                                <div class="button">SUBMIT</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +157,7 @@
 <script>
 import Product from './Product.vue';
 import Number from './Number.vue';
+import Checkbox from './Checkbox.vue';
 
 export default {
     data() {
@@ -107,6 +165,30 @@ export default {
             activeSize: 0,
             activeImages: 0,
             activeTitle: 0,
+            activeColor: 0,
+            reviews: [
+                {
+                    image: "./img/avatar.png",
+                    name: "Janice Miller", 
+                    data: "April 06, 2020", 
+                    info: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est…"
+                },
+                {
+                    image: "./img/avatar.png",
+                    name: "Benjam Porter", 
+                    data: "April 06, 2020", 
+                    info: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est…"
+                },
+                {
+                    image: "./img/avatar.png",
+                    name: "Janice Bucher", 
+                    data: "April 06, 2020", 
+                    info: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est…"
+                },
+            ],
+            colors: [
+                "black", "red", "grey"
+            ],
             sizes: [
                 "XS", "S", "M", "L", "XL"
             ],
@@ -171,6 +253,9 @@ export default {
         }
     },
     methods: {
+        chengeColor(active) {
+            this.activeColor === active;
+        },
         switchDescription(index) {
             return this.activeTitle === index;
         },
@@ -187,7 +272,7 @@ export default {
             
         }
     },
-    components: { Product, Number },
+    components: { Product, Number , Checkbox},
 }
 </script>
 
@@ -431,10 +516,104 @@ export default {
             font-weight: 400
             font-size: 14px
             line-height: 24px
+    .info-conteiner
+        display: flex
+        margin-top: 55px
+    .titles
+        display: flex
+        flex-direction: column
+        h1
+            color: $head
+            font-weight: 500
+            font-size: 16px
+            line-height: 22px
+            width: 406px
+            position: relative
+            span
+                right: 0
+                position: absolute
+                color: $head
+                font-weight: 400
+                font-size: 14px
+                line-height: 24px
     .discription-container
         display: none
         &.active
             display: block
+    .reviewsTitle
+        margin-top: 55px 
+        color: $head
+        font-weight: 500
+        font-size: 18px
+        line-height: 24px
+    .review
+        display: flex
+        position: relative
+        padding-left: 90px
+        padding-top: 30px
+        padding-bottom: 23px 
+        border-bottom: 1px solid $background-footer
+        img
+            position: absolute
+            left: 0
+            top: 30px
+        h3
+            margin-top: 0
+            margin-bottom: 0
+            color: $head
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+        h4
+            margin-top: 0
+            color: $second
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+        span
+            color: $second
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+        .reviewRating
+            position: absolute
+            top: 30px
+            right: 0
+    .yourReviews
+        display: flex
+        flex-direction: column
+        h1
+            color: $head
+            font-weight: 500
+            font-size: 18px
+            line-height: 24px
+        span
+            color: $head
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+    .textArea textarea
+        padding: 12px 20px
+        padding: 12px 20px
+        width: 100%
+        height: 200px
+        box-sizing: border-box
+        outline: none
+        border: 2px solid $background-footer
+        &::placeholder
+            left: 25px
+            top: 25px
+    .rewiewsInput .input
+        margin-top: 30px
+    .checkbox
+        color: $second
+        margin-left: -14px
+        margin-top: 15px
+        font-weight: 400
+        font-size: 14px
+        line-height: 24px
+    .button
+        width: 200px !important
 
 .related-products
     padding-bottom: 100px

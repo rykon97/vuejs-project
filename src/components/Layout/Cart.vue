@@ -6,36 +6,14 @@
             </div>
             <div class="cart__wrapper">
                 <div class="cart__bag">
-                    <div class="cart__item">
-                        <a class="cart__image" href=""></a>
+                    <div v-for="item in clouses" class="cart__item">
+                        <a class="cart__image" href=""><img :src="item.image" alt=""></a>
                         <div class="cart__info">
-                            <h1>Zessi Dresses</h1>
-                            <h3>Color:  Yellow</h3>
-                            <h3>Size: L</h3>
+                            <h1>{{item.name}}</h1>
+                            <h3>Color:  {{item.color}}</h3>
+                            <h3>Size: {{item.size}}</h3>
                             <div class="selector">
-                                <input type="number" id="" name="" min="1" max="10"><span>$99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart__item">
-                        <a class="cart__image" href=""></a>
-                        <div class="cart__info">
-                            <h1>Kirby T-Shirt</h1>
-                            <h3>Color:  Yellow</h3>
-                            <h3>Size: L</h3>
-                            <div class="selector">
-                                <input type="number" id="" name="" min="1" max="10"><span>$99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart__item">
-                        <a class="cart__image" href=""></a>
-                        <div class="cart__info">
-                            <h1>Cableknit Shawl</h1>
-                            <h3>Color:  Yellow</h3>
-                            <h3>Size: L</h3>
-                            <div class="selector">
-                                <input type="number" id="" name="" min="1" max="10"><span>$99</span>
+                                <Number :min="1" :max="100"></Number> <span>{{item.cost}}</span>
                             </div>
                         </div>
                     </div>
@@ -56,7 +34,23 @@
 </template>
 
 <script>
+
 export default {
+    data() {
+        return {
+            clouses: [
+                {
+                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+                },
+                {
+                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+                },
+                {
+                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+                },
+            ]
+        }
+    },
     methods: {
         openMenu() {
             document.body.style.position = 'fixed';
