@@ -28,7 +28,7 @@ export default {
                     info: 'Manage Your Items List'
                 },
                 {
-                    title: 'SHOPPING BAG',
+                    title: 'SHIPPING AND CHECKOUT',
                     info: 'Checkout Your Items List'
                 },
                 {
@@ -48,7 +48,7 @@ export default {
     display: flex
     justify-content: space-between
     width: 1200px
-    padding-bottom: 10px 
+    padding-bottom: 10px
     border-bottom: 2px solid $background-footer
     margin-bottom: 50px
 .steps
@@ -76,12 +76,12 @@ export default {
         font-size: 18px
         line-height: 24px
         &:first-child
-            margin-right: 12px 
+            margin-right: 12px
 .step-info
     padding-left: 30px
     padding-top: -30px
     span
-        margin-top: 0px 
+        margin-top: 0
         color: $second
         font-weight: 400
         font-size: 14px

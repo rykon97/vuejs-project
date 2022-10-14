@@ -1,6 +1,6 @@
 @import './styles/vars'
 
-body 
+body
     font-family: 'sofia-pro', sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
@@ -16,35 +16,8 @@ a
 .close
     height: 16px
     width: 16px
-    background-image: url("./img/icons/close.svg")
+    background-image: url("/img/icons/close.svg")
 
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button 
-    -webkit-appearance: none
- 
-.input
-    position: relative
-    input
-        padding: 12px 20px
-        width: 100%
-        box-sizing: border-box
-        outline: none
-        border: 2px solid $background-footer
-        transition-duration: 0.4s
-        &:focus, &:not(:placeholder-shown)
-            border-color: $head
-            ~ label
-                color: $head
-                top: -8px
-                left: 19px
-                padding: 0 4px
-    label
-        transition-duration: 0.4s
-        background-color: $text-white
-        color: $second
-        position: absolute
-        left: 22px
-        top: 14px
-        font-size: 14px
 
 .button
     height: 60px
@@ -62,7 +35,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
     transition-duration: 0.4s
     &:hover
         cursor: pointer
-        background-color: $third  
+        background-color: $third
 
 .radio
     a
@@ -73,12 +46,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
         border: 2px solid $text-white
     &.active
         border: 2px solid $head
-    &::before 
+    &::before
             content: ""
             display: inline-block
             vertical-align: middle
-            padding-top: 100%   
+            padding-top: 100%
     .black
         background: $head !important
-        
-        
+

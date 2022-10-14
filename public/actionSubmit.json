@@ -1,0 +1,6 @@
+{
+    "errors": {
+        "name": "Name is required",
+        "surname": "Name is required"
+    }
+}
