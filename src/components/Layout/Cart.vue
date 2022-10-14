@@ -6,7 +6,7 @@
             </div>
             <div class="cart__wrapper">
                 <div class="cart__bag">
-                    <div v-for="item in clouses" class="cart__item">
+                    <div v-for="item in cart" class="cart__item">
                         <a class="cart__image" href=""><img :src="item.image" alt=""></a>
                         <div class="cart__info">
                             <h1>{{item.name}}</h1>
@@ -35,21 +35,27 @@
 
 <script>
 
+import {mapState} from "vuex";
+import Number from "../Core/Number.vue";
+
 export default {
     data() {
         return {
-            clouses: [
-                {
-                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
-                },
-                {
-                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
-                },
-                {
-                    name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
-                },
-            ]
+            // cart: [
+            //     {
+            //         name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+            //     },
+            //     {
+            //         name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+            //     },
+            //     {
+            //         name: "Cableknit Shawl", color: "Yellow", size: "L", cost: "99", image: "./img/bag.png"
+            //     },
+            // ]
         }
+    },
+    components: {
+        Number
     },
     methods: {
         openMenu() {
@@ -66,7 +72,10 @@ export default {
                 document.querySelector('.cart__overlay').classList.add('hidden');
             }
         }
-    }
+    },
+    computed: {
+        ...mapState(['cart'])
+    },
 }
 </script>
 
@@ -97,7 +106,7 @@ export default {
         display: flex
         align-items: center
         justify-content: space-between
-        padding: 33px 40px 27px 
+        padding: 33px 40px 27px
     &__subtotal
         display: flex
         padding-top: 16px
@@ -159,29 +168,29 @@ export default {
         &:hover
             cursor: pointer
             background-color: $third
-    &__image 
+    &__image
         background-image: url("./img/bag.png")
         width: 100px
         height: 100px
         margin-right: 20px
     .selector input
-        margin-right: 100px 
+        margin-right: 100px
     &__item
         display: flex
         padding-top: 20px
         &:not(:first-child)
-            border-top: 1px solid $background-footer     
+            border-top: 1px solid $background-footer
         &:not(:last-child)
-            margin-bottom: 20px           
+            margin-bottom: 20px
         h1
-            margin-top: 0 
+            margin-top: 0
             font-weight: 400
             font-size: 16px
-            line-height: 18px 
+            line-height: 18px
             color: $head
         h3
-            margin-top: 0 
-            margin-bottom: 0 
+            margin-top: 0
+            margin-bottom: 0
             font-weight: 400
             font-size: 14px
             line-height: 24px

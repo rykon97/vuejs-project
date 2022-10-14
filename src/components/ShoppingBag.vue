@@ -16,7 +16,7 @@
                             <a href=""><img :src="item.image" alt=""></a>
                             <h3>{{item.name}}</h3>
                             <h4>${{item.cost}}</h4>
-                            <Number v-model="item.count"/>
+                            <Number v-model="item.count" @update:modelValue="updateItem(index)"/>
                             <h5>${{item.cost*item.count}}</h5>
                             <a @click.prevent="DeleteItem(index)" class="close" href="#"></a>
                         </div>
@@ -39,7 +39,7 @@
                             <h1>CART TOTALS</h1>
                             <div class="subtotal">
                                 <h3>SUBTOTAL</h3>
-                                <span>$1300</span>
+                                <span>${{ subtotal }}</span>
                             </div>
                             <div class="shipping">
                                 <h3>SHIPPING</h3>
@@ -67,11 +67,11 @@
                             </div>
                             <div class="vat">
                                 <h3>VAT</h3>
-                                <span>$19</span>
+                                <span>${{ vat}}</span>
                             </div>
                             <div class="total">
                                 <h3>TOTAL</h3>
-                                <span>$1319</span>
+                                <span>${{ total }}</span>
                             </div>
                         </div>
                         <div class="checkout">
@@ -115,12 +115,30 @@ export default {
     },
     AddItem() {
       this.$store.dispatch('addItem', {
-        image: "/img/bag.png", name: "Zessi Dresses", cost: "99"
+        image: "/img/bag.png", name: "Zessi Dresses", cost: "99", color: "Yellow", size: "L"
       })
-    }
+    },
+      updateItem(index) {
+
+      }
   },
   computed: {
-    ...mapState(['cart'])
+    ...mapState(['cart']),
+      subtotal() {
+        let subtotal = 0
+
+        this.cart.forEach(item => {
+            subtotal+= (parseInt(item.cost) * item.count)
+        })
+
+          return Math.ceil(subtotal*100)/100
+      },
+      vat() {
+        return Math.ceil(this.subtotal*0.2*100)/100
+      },
+      total() {
+        return Math.ceil((this.subtotal+this.vat)*100)/100
+      }
   },
   components: { ShoppingSteps, Number },
   created() {
